@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DiscoTeca</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Supliu Teste</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./db/databaseinformation/DataBaseInformation.html">Criação de tabelas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./painel/index.html">Painel de controle</a>
+          </li>
+        </ul>
+      </nav>
+<div class="container-fluid">
+    <div class="row bg-light">
+       <div class="col-sm-6">
+        <div class="logo">
+            <img src="./assets/img/logo.png" alt="">
+        </div>
+       </div>
+        <div class="col-sm-6 ">
+            <h5 class="text-right title-site">DISCOGRAFIA</h5>
+        </div>
+    </div>
+    <div class="row bg-box">
+        <div class="col-sm-8">
+            <p>Digite Tião Carneiro</p>
+                <div class="boxSearch">
+                    <input type="text" name="inputSearch" id="inputSearch" class="form-control">  
+                    <a  id="btnSearch"  class="btn btn-primary procurar">Procurar</a>
+                </div>
+                <hr>
+        </div>
+        <div class="col-sm-4">
+          
+        </div>
+        <div class="col-sm-12" id="albumResult">
+                <div class="boxResponse" id="ResponseAlbum">
+                    <table class="table table-hover">
+                        <tbody id="faixas">
+                         
+                        </tbody>
+                      </table>
+                </div>
+        </div>
+    </div> 
+</div>
+<script src="./assets/js/search.js"></script>
+</body>
+</html>

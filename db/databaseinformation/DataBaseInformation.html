@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataBaseInformation</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="seja-bem-vindo">Seja Bem vindo</h1>
+<p>Me chamo Natan Martins, há alguns anos desenvolvedor full Stack.<br>
+como solcitado segue informações referentes as criações das tabelas.</p>
+<p>Todos os recursos foram criados  a partir do console SQL do Mysql.</p>
+<h2 id="database-supliu">Database supliu</h2>
+<p>Para Criação da base de dados supliu :</p>
+<pre><code>CREATE DATABASE supliu;
+</code></pre>
+<h2 id="faixas.table">Faixas.table</h2>
+<p>Para criação da tabela Faixas em  database supliu :</p>
+<pre><code>CREATE  TABLE `faixa` (
+	`id`  int(11) NOT  NULL AUTO_INCREMENT,
+	`numero`  int(255) NOT  NULL,
+	`nome`  varchar(255) COLLATE utf8_unicode_ci NOT  NULL,
+	`duracao`  varchar(255) COLLATE utf8_unicode_ci NOT  NULL,
+	`album_id`  int(255) NOT  NULL,
+	PRIMARY  KEY (`id`)
+</code></pre>
+<p>)</p>
+<h2 id="album.table">Album.table</h2>
+<p>Para criação da tabela album em  database supliu :</p>
+<pre><code>CREATE  TABLE `album` (
+	`id`  int(11) NOT  NULL AUTO_INCREMENT,
+	`nome_album`  varchar(255) COLLATE utf8_unicode_ci NOT  NULL,
+	`year`  varchar(255) COLLATE utf8_unicode_ci NOT  NULL,
+	PRIMARY  KEY (`id`)
+</code></pre>
+<p>)</p>
+</div>
+</body>
+
+</html>

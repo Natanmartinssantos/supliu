@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Painel de contrle</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .BoxUpdate{
+      padding:20px;
+      border:solid 1px #f7f7f7;
+    }
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Painel de controle</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.html">Home</a></li>
+        <li><a href="../db/databaseinformation/DataBaseInformation.html">Data Base Information</a></li>
+        <li>
+            <a data-toggle="modal" data-target="#NovoAlbum"  class="btn btn-primary">Novo album</a>
+        </li>
+        <li>
+            <a data-toggle="modal" data-target="#NovaMusica" class="btn btn-primary">Nova Musica</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 text-left"> 
+      <h1>Musicas</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Faixa</th>
+            <th>Nome</th>
+            <th>Duração</th>
+            <th>Album</th>
+          </tr>
+        </thead>
+        <tbody id="MusicList">
+          
+        </tbody>
+      </table>
+      <hr><br>
+      <div style="display: none;" id="updateMusic" class="BoxUpdate">
+        <h2>Update Music</h2><br>
+        <form action="../assets/PHP/updateMusic.php" method="POST" id="updateMusicForm">
+          
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 text-left"> 
+      <h1>Albuns</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Ano</th>
+          </tr>
+        </thead>
+        <tbody id="AlbumList">
+          <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Ano</td>
+            <td> 
+                <div class="btn btn-sm btn-danger">Exclude</div>
+                <div class="btn btn-sm btn-warning">Edit</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="display: none;" id="updateAlbum" class="BoxUpdate">
+        <h2>Update Album</h2><br>
+        <form action="../assets/PHP/updateAlbum.php" method="POST" id="updateAlbumForm">
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+<!-- Nova musica Modal -->
+<div class="modal" id="NovaMusica">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Nova Musica</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <label for="nome">Nome da musica : </label>
+        <input type="text" name="nome" id="nome_faixa" class="form-control" required><br>
+
+        <label for="numero">Numero da faixa : </label>
+        <input type="number" name="numero" id="numero_faixa" class="form-control" required><br>
+
+        <label for="duracao">Duração : </label>
+        <input type="text" name="duracao" id="duracao_faixa" class="form-control" required><br>
+
+        <label for="Album">Numero da faixa : </label>
+        <select class="form-control" name="album" id="album_options">
+            
+        </select>
+        <button onclick="actions.insertFaixa()" class="btn btn-primary">Salvar Album</button>
+    </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button  id="close_modal_music" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Novo Album Modal -->
+<div class="modal" id="NovoAlbum">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Novo Album</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <label for="name_album">Nome do album : </label>
+          <input type="text" name="name_album" id="name_album" class="form-control" required><br>
+          <label for="age">Ano de produção : </label>
+          <input type="number" name="age" id="age" class="form-control" required><br>
+          <button onclick="actions.insertAlbum()" class="btn btn-primary">Salvar Album</button>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button id="close_modal_album" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="../assets/js/painelRequests.js"></script>
+</body>
+</html>
